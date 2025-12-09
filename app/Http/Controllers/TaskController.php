@@ -109,7 +109,9 @@ class TaskController extends Controller
 
         $taskComment = TaskComment::create($validated);
 
-        return response()->json(['massage' => 'comment added successfully'], 200);
+        return response()->json([
+            
+            'massage' => 'comment added successfully'], 200);
     }
 
     //view all comment
