@@ -18,31 +18,29 @@ class LeaveRequestController extends Controller
          //dd('log');
        $employee = Employee::where('user_id', auth()->id())->first();
 
-      // dd('log');
-       if (!$employee) {
-        return response()->json(['message' => 'Employee not found'], 404);
-    }
-   // dd('log');
-
-    // Reduce leave count
-    if ($request->leave_type === 'annual') {
-        
-        dd('log');
-            if ($employee->annual_leave_count == 0 ) {
-        return response()->json([
-            'message' => 'No annual leave remaining'
-        ], 400);
+       // Annual leave
+    if ($validated['leave_type'] === 'annual') {
+        if ($employee->annual_leave_count == 0) {
+            return response()->json([
+                'message' => 'No annual leave remaining'
+            ], 400);
+        }
 
         $employee->annual_leave_count -= 1;
-
-        return response()->json(['massage'=>'You are not annual leave'],400);
     }
+//dd('log');
 
-    if ($request->leave_type === 'casual') {
+    // Casual leave
+    if ($validated['leave_type'] === 'casual') {
+        if ($employee->casual_leave_count == 0) {
+            return response()->json([
+                'message' => 'No casual leave remaining'
+            ], 400);
+        }
+
         $employee->casual_leave_count -= 1;
-   //dd('log');
-         return response()->json(['massage'=>'You are not casual leave'],400);
     }
+
 //dd('log');
     // Savecounts
      $employee->save();
@@ -65,4 +63,3 @@ class LeaveRequestController extends Controller
 
 }
 
-}
