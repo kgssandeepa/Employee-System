@@ -49,6 +49,7 @@ class TaskController extends Controller
     public function update(UpdateTaskRequest $request, $id)
     {
         $validated = $request->validated();
+        
         //dd('log');
         $task = Task::find($id);
 
