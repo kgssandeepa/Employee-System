@@ -14,14 +14,16 @@ class LeaveResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $employeeDetails = $this->employee;
+
         return [
-            'id'=>$this->id,
-            'reason'=>$this->reason,
-            'leave_type'=>$this->leave_type,
-            'date'=>$this->date,
-            'employee_id'=>$this->employee_id,
-            'created_at'=>$this->created_at,
-            'updated_at'=>$this->updated_at,
+
+            'id' => $this->id,
+            'reason' => $this->reason,
+            'date' => $this->date,
+            'employee_details' => new EmployeeResource($employeeDetails),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }
