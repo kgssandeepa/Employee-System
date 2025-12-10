@@ -20,6 +20,8 @@ use App\Http\Resources\TaskResource;
 
 class TaskController extends Controller
 {
+
+    
     public function store(StorePostRequest $request)
     {
         $validated = $request->validated();
@@ -123,9 +125,9 @@ class TaskController extends Controller
 
     //update comment
     public function UpdateComment(UpdateCommentRequest $request, $id )
-    {
+    {   
         $validated = $request->validated();
-       $taskComment = TaskComment::find($id);
+        $taskComment = TaskComment::find($id);
 
         // dd('log'); 
       
