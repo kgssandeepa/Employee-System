@@ -8,7 +8,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LeaveRequestController;
 
 
-
+Route::post('/register',[Authcontroller::class,'register']);
 Route::post('/login', [Authcontroller::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {

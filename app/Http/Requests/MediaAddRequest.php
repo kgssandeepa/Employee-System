@@ -34,7 +34,7 @@ class MediaAddRequest extends FormRequest
     {
         return [
 
-            'file' => 'required|file'
+            'file' => 'required|file|mimes:jpg,png,pdf|max:2048'
         ];
     }
 }

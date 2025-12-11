@@ -16,7 +16,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string('display_name');
             $table->string('name');
+            $table->string('path');
             
+
         });
     }
 

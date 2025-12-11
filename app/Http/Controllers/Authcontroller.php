@@ -2,13 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class Authcontroller extends Controller
 {
-      
+        public function register(Request $request)
+    {
+       // dd('log');
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:6',
+        ]);
+
+//dd('log');
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 422);
+        }
+
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+        
+       // dd('log');
+        return response()->json([
+            'message' => 'User registered successfully',
+            'user'    => $user,
+
+
+        ]);
+    }
 public function login(Request $request)
 {
     $credentials = $request->only('email','password');

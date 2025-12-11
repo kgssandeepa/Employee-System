@@ -26,12 +26,17 @@ class EmployeeController extends Controller
         ], 201);
     }
 
+    //upload image
+
     public function upload(MediaAddRequest $request,)
     {
 
         $validated = $request->validated();
+        
+        //dd('log');
 
         $media = Media::create($validated);
+        
         dd('log');
         return response()->json([
 

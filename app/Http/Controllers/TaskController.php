@@ -129,10 +129,12 @@ class TaskController extends Controller
         $validated = $request->validated();
         $taskComment = TaskComment::find($id);
 
-        // dd('log'); 
+        //dd('log'); 
       
 
         $taskComment->update($validated);
+
+      //  dd('log');
 
         return response()->json(['massage' => 'comments update succesfully'], 200);
     }

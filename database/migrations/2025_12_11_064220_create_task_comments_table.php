@@ -9,17 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-
     public function up(): void
     {
-        Schema::create('leave_requests', function (Blueprint $table) {
-           $table->id();
+        Schema::create('task_comments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('task_id');
+            $table->string('comment');
             $table->timestamps();
-            $table->string('reason');
-            $table->enum('leave_type',['annual','casual']);
-            $table->date('date');
-            $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
 
+            $table->foreign('task_id')->references('id')->on('tasks')->restrictOnDelete();
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('leave_request');
+        Schema::dropIfExists('task_comments');
     }
 };
