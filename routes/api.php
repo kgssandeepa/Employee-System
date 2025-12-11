@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Authcontroller;
-use App\Http\Controllers\LeaveRequestController;
-use App\Http\Controllers\TaskController;
 use App\Models\TaskComment;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Authcontroller;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\LeaveRequestController;
 
 
 
@@ -27,7 +28,11 @@ Route::middleware('auth:api')->group(function () {
     Route::post('task-comment', [TaskController::class, 'TaskComment']);
     Route::get('task-comment', [TaskController::class, 'ViewAllComment']);
     Route::put('task-comment/{id}', [TaskController::class, 'UpdateComment']);
-    Route::delete('task-comment/{id}',[TaskController::class,'DeleteComment']);
+    Route::delete('task-comment/{id}', [TaskController::class, 'DeleteComment']);
+
+    //employye
+    Route::post('/employe', [EmployeeController::class, 'store']);
+    Route::post('/employe/upload', [EmployeeController::class, 'upload']);
 
 
 });

@@ -22,6 +22,8 @@ class EmployeeResource extends JsonResource
             'epf_number' => $this->epf_number,
             'annual_leave_count' => $this->annual_leave_count,
             'casual_leave_count' => $this->casual_leave_count,
+            
+
 
 
         ];

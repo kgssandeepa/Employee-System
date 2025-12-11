@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('epf_number')->unique();
             $table->integer('annual_leave_count')->default(14);
             $table->integer('casual_leave_count')->default(7);
+            $table->foreignId('media_id');
+            
              
         });
     }
