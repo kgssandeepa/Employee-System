@@ -104,11 +104,7 @@ class TaskController extends Controller
         //dd('log');
         $validated = $request->validated();
         //dd('log');
-        if (!validator()) {
-
-            return response()->json(['massage' => 'employee task note found'], 404);
-        }
-
+       
         $taskComment = TaskComment::create($validated);
 
         return response()->json([
