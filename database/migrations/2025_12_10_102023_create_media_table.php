@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('display_name');
             $table->string('name');
             $table->string('path');
-            
-
+            $table->string('type', 10);
         });
     }
 
